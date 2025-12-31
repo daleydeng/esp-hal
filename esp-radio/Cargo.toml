@@ -53,7 +53,7 @@ instability = "0.3.9"
 # Unstable dependencies that are not (strictly) part of the public API
 allocator-api2 = { version = "0.3.0", default-features = false, features = ["alloc"] }
 document-features  = "0.2"
-esp-alloc = { version = "0.9.0", path = "../esp-alloc", optional = true }
+esp-alloc = { version = "0.9.0", path = "../esp-alloc", optional = true, default-features = false, features = ["compat"] }
 esp-config = { version = "0.6.1", path = "../esp-config" }
 esp-metadata-generated = { version = "0.3.0", path = "../esp-metadata-generated" }
 esp-sync = { version = "0.1.1", path = "../esp-sync" }
@@ -112,7 +112,7 @@ default = ["esp-alloc"]
 ## - `pub extern "C" fn calloc_internal(number: u32, size: usize) -> *mut u8`
 ## - `pub extern "C" fn realloc(ptr: *mut u8, new_size: usize) -> *mut u8`
 ## - `pub extern "C" fn get_free_internal_heap_size() -> usize;`
-## 
+##
 ## Note that the untyped nature of the allocator functions means that esp-alloc is likely the more memory efficient option.
 esp-alloc = ["dep:esp-alloc"]
 

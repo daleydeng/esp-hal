@@ -45,7 +45,7 @@ rtos-trace = { version = "0.2.0", optional = true }
 allocator-api2 = { version = "0.3.0", default-features = false, features = ["alloc"], optional = true }
 document-features  = "0.2"
 embassy-sync = "0.7"
-esp-alloc = { version = "0.9.0", path = "../esp-alloc", optional = true }
+esp-alloc = { version = "0.9.0", path = "../esp-alloc", optional = true, default-features = false, features = ["compat"] }
 esp-config = { version = "0.6.1", path = "../esp-config" }
 esp-sync = { version = "0.1.1", path = "../esp-sync" }
 esp-radio-rtos-driver = { version = "0.2.0", path = "../esp-radio-rtos-driver", features = ["ipc-implementations"], optional = true }
@@ -93,7 +93,7 @@ alloc = ["dep:allocator-api2", "dep:esp-radio-rtos-driver"]
 ## this feature, you need to provide implementations for the following functions:
 ## - `pub extern "C" fn malloc_internal(size: usize) -> *mut u8`
 ## - `pub extern "C" fn free_internal(ptr: *mut u8)`
-## 
+##
 ## Note that the untyped nature of the allocator functions means that esp-alloc is likely the more memory efficient option.
 esp-alloc = ["alloc", "dep:esp-alloc"]
 
