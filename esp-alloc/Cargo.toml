@@ -43,7 +43,13 @@ rlsf = { version = "0.2", features = ["unstable"] }
 esp-config   = { version = "0.6.1", path = "../esp-config", features = ["build"] }
 
 [features]
-default = ["compat"]
+default = ["compat", "global-allocator"]
+
+## Register `esp_alloc::HEAP` as the global allocator.
+##
+## Disable this feature (via `default-features = false`) to provide your own
+## `#[global_allocator]` in a downstream crate (e.g. for allocation tracking).
+global-allocator = []
 
 ## Enable nightly rustc-only features, like `feature(allocator_api)`.
 nightly = []

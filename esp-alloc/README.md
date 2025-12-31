@@ -10,6 +10,16 @@ A simple `no_std` heap allocator for RISC-V and Xtensa processors from Espressif
 
 **NOTE:** using this as your global allocator requires using Rust 1.68 or greater, or the `nightly` release channel.
 
+## Custom global allocator
+
+By default, `esp-alloc` registers `esp_alloc::HEAP` as the global allocator.
+If you want to provide your own `#[global_allocator]` (e.g. for allocation tracking),
+disable the default features and enable the features you need (including your chip feature):
+
+```toml
+esp-alloc = { version = "0.9", default-features = false, features = ["compat", "esp32c6"] }
+```
+
 ## Minimum Supported Rust Version (MSRV)
 
 This crate is guaranteed to compile when using the latest stable Rust version at the time of the crate's release. It _might_ compile with older versions, but that may change in any new release, including patches.
